@@ -3,6 +3,7 @@
 2. [Configuring Active Directory and Domain Controller](https://github.com/larryn-tech/homelab/blob/main/02-active_directory.md)
 3. Configuring Splunk (Current)
 4. [Simulating Brute Force Attack and Atomic Red Team](https://github.com/larryn-tech/homelab/blob/main/04-attack.md)
+5. [Login Hardening and Splunk Alerts](https://github.com/larryn-tech/homelab/blob/main/05-login_hardening.md)
 
 # Splunk Configuration
 In the previous part, we setup our virtual machines (VMs) and installed our operating systems.

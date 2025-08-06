@@ -3,6 +3,7 @@
 2. [Configuring Active Directory and Domain Controller](https://github.com/larryn-tech/homelab/blob/main/02-active_directory.md)
 3. [Configuring Splunk](https://github.com/larryn-tech/homelab/blob/main/03-splunk_configuration.md)
 4. Simulating Brute Force Attack and Atomic Red Team (Current)
+5. [Login Hardening and Splunk Alerts](https://github.com/larryn-tech/homelab/blob/main/05-login_hardening.md)
 
 # Simulating Attacks with Kali Linux and ART
 Kali Linux is a Linux distribution that comes pre-installed with hundreds of tools designed for digital forensics and penetration testing. It is intended for ethical hacking, security auditing, and learning purposes in a **controlled and legal environment**, with permission from owners.

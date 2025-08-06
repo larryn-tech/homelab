@@ -3,6 +3,7 @@
 2. [Configuring Active Directory and Domain Controller](https://github.com/larryn-tech/homelab/blob/main/02-active_directory.md)
 3. [Configuring Splunk](https://github.com/larryn-tech/homelab/blob/main/03-splunk_configuration.md)
 4. [Simulating Brute Force Attack and Atomic Red Team](https://github.com/larryn-tech/homelab/blob/main/04-attack.md)
+5. [Login Hardening and Splunk Alerts](https://github.com/larryn-tech/homelab/blob/main/05-login_hardening.md)
 
 # Virtual Machines
 Virtual machines (VMs) are software-based computers that run on top of your existing physical computer, allowing you to operate multiple independent operating systems simultaneously. A home lab built with VMs lets you safely practice setting up networks, servers (like Active Directory Domain Services), and various software without the risk of damaging your main computer or needing expensive dedicated hardware. Oracle VirtualBox is an open-source virtualization software that allows users to create and run VMs on their computers.
