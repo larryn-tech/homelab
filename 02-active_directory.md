@@ -4,6 +4,7 @@
 3. [Configuring Splunk](https://github.com/larryn-tech/homelab/blob/main/03-splunk_configuration.md)
 4. [Simulating Brute Force Attack and Atomic Red Team](https://github.com/larryn-tech/homelab/blob/main/04-attack.md)
 5. [Login Hardening and Splunk Alerts](https://github.com/larryn-tech/homelab/blob/main/05-login_hardening.md)
+6. [Login Hardening and Splunk Alerts](https://github.com/larryn-tech/homelab/blob/main/05-login_hardening.md)
 
 # Active Directory
 Active Directory Domain Services (AD DS) is a component of Microsoft’s Active Directory that centrally manages and stores information about users, computers, and other network resources. It provides essential functions like user authentication and authorization, enabling single sign-on, enforcing security policies through Group Policy, and simplifying resource management across an organization's IT infrastructure. Servers running AD DS are called domain controllers, which provide authentication for the domain and ensure the availability and replication of the directory data.

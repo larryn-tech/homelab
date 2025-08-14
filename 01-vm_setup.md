@@ -4,6 +4,8 @@
 3. [Configuring Splunk](https://github.com/larryn-tech/homelab/blob/main/03-splunk_configuration.md)
 4. [Simulating Brute Force Attack and Atomic Red Team](https://github.com/larryn-tech/homelab/blob/main/04-attack.md)
 5. [Login Hardening and Splunk Alerts](https://github.com/larryn-tech/homelab/blob/main/05-login_hardening.md)
+6. [Adding a Metasploitable 2 to the Network](https://github.com/larryn-tech/homelab/blob/main/06-metasploitable.md)
+
 
 # Virtual Machines
 Virtual machines (VMs) are software-based computers that run on top of your existing physical computer, allowing you to operate multiple independent operating systems simultaneously. A home lab built with VMs lets you safely practice setting up networks, servers (like Active Directory Domain Services), and various software without the risk of damaging your main computer or needing expensive dedicated hardware. Oracle VirtualBox is an open-source virtualization software that allows users to create and run VMs on their computers.
@@ -17,12 +19,13 @@ During setup, you may be prompted to install Microsoft Visual C++ 2019 Redistrib
 We will create a NAT Network that will connect each of the virtual machines (VMs). Recall that the IP settings for the network will be as follows:
 |	| IP Address	|
 |:----|:----|
-| `Network` | 192.168.10.0/24 |
-| `Gateway` | 192.168.10.1 |
-| `dc-server` | 192.168.10.7 |
-| `splunk-server` | 192.168.10.10 |
-| `win-workstation` | 192.168.10.100 |
-| `attacker` | 192.168.10.250 |
+| `Network` | `192.168.10.0/24` |
+| `Gateway` | `192.168.10.1` |
+| `dc-server` | `192.168.10.7` |
+| `splunk-server` | `192.168.10.10` |
+| `win-workstation` | `192.168.10.100` |
+| `vuln-machine` | `192.168.10.101` |
+| `attacker` | `192.168.10.250` |
 
 1. In Oracle VirtualBox Manager, navigate to **File** > **Tools** > **Network Manager**
 2. Select the **NAT Networks** tab and then click on the **Create** button
@@ -38,6 +41,7 @@ We will create a NAT Network that will connect each of the virtual machines (VMs
 | `dc-server` | [Windows Server 2025](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2025) | 4096 MB / 2 CPU | 50 GB |
 | `splunk-server` | [Ubuntu Server](https://ubuntu.com/download/server) | 8192 MB / 2 CPU | 100 GB |
 | `win-workstation` | [Windows 10 Pro](https://www.microsoft.com/en-us/software-download/windows10ISO) | 4096 MB / 2 CPU | 80 GB |
+| `vuln-machine` | [Windows 10 Pro](https://www.microsoft.com/en-us/software-download/windows10ISO) | 4096 MB / 2 CPU | 80 GB |
 | `attacker` | [Kali Linux](https://www.kali.org/get-kali/#kali-virtual-machines) | 2048 MB / 1 CPU | 55 GB |
 
 For each machine, make sure it is connected to the created NAT network by going to **Settings** > **Network**. Select **Expert** and and configure the following settings:

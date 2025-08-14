@@ -4,6 +4,7 @@
 3. Configuring Splunk (Current)
 4. [Simulating Brute Force Attack and Atomic Red Team](https://github.com/larryn-tech/homelab/blob/main/04-attack.md)
 5. [Login Hardening and Splunk Alerts](https://github.com/larryn-tech/homelab/blob/main/05-login_hardening.md)
+6. [Adding a Metasploitable 2 to the Network](https://github.com/larryn-tech/homelab/blob/main/06-metasploitable.md)
 
 # Splunk Configuration
 In the previous part, we setup our virtual machines (VMs) and installed our operating systems.

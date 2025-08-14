@@ -27,6 +27,7 @@ Below are the specs and software I have installed on my Dell Latitude 7300, whic
 | `dc-server` | Serves as the domain controller and provides authentication and authorization services for the Gold Rush organization. |
 | `splunk-server` | Collects and manages machine-generated data for searching and analysis. |
 | `win-workstation` | Serves as the workstation that Gold Rush employees log into.|
+| `vuln-machine` | Serves as an intentionally vulnerable machine for vulnerability scanning and penetration testing. |
 | `attacker` | Serves as the machine an attacker uses to exploit vulnerabilities in the Gold Rush network. |
 
 - Both the Windows 10 machine and Active Directory server will have Sysmon installed to collect telemetry, which will be sent to the Splunk server via the Splunk Universal Forwarder.
@@ -38,3 +39,4 @@ Below are the specs and software I have installed on my Dell Latitude 7300, whic
 3. [Configuring Splunk](https://github.com/larryn-tech/homelab/blob/main/03-splunk_configuration.md)
 4. [Simulating Brute Force Attack and Atomic Red Team](https://github.com/larryn-tech/homelab/blob/main/04-attack.md)
 5. [Login Hardening and Splunk Alerts](https://github.com/larryn-tech/homelab/blob/main/05-login_hardening.md)
+6. [Adding a Metasploitable 2 to the Network](https://github.com/larryn-tech/homelab/blob/main/06-metasploitable.md)

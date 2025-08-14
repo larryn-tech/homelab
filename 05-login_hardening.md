@@ -4,6 +4,7 @@
 3. [Configuring Splunk](https://github.com/larryn-tech/homelab/blob/main/03-splunk_configuration.md)
 4. [Simulating Brute Force Attack and Atomic Red Team](https://github.com/larryn-tech/homelab/blob/main/04-attack.md)
 5. Login Hardening and Splunk Alerts (Current)
+6. [Adding a Metasploitable 2 to the Network](https://github.com/larryn-tech/homelab/blob/main/06-metasploitable.md)
 
 # Login Hardening and Splunk Alerts
 In the previous part, we performed a brute-force attack with Crowbar and executed Atomic Red Team (ART) tests to observe key security events like failed logons and account creations/deletions in Splunk. In this part, we will focus on hardening login security through Group Policy Objects (GPOs) and implementing real-time alerts in Splunk to prevent and/or more quickly detect these types of attacks.
