@@ -36,15 +36,39 @@ We will create a NAT Network that will connect each of the virtual machines (VMs
 
 ## Virtual Machine Settings
 
-| Machine | Operating System | Specs | Storage |
+| Machine | Operating System | Memory / Processors | Storage |
 |:----|:----|:----|:----|
 | `dc-server` | [Windows Server 2025](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2025) | 4096 MB / 2 CPU | 50 GB |
 | `splunk-server` | [Ubuntu Server](https://ubuntu.com/download/server) | 8192 MB / 2 CPU | 100 GB |
 | `win-workstation` | [Windows 10 Pro](https://www.microsoft.com/en-us/software-download/windows10ISO) | 4096 MB / 2 CPU | 80 GB |
-| `vuln-machine` | [Windows 10 Pro](https://www.microsoft.com/en-us/software-download/windows10ISO) | 4096 MB / 2 CPU | 80 GB |
 | `attacker` | [Kali Linux](https://www.kali.org/get-kali/#kali-virtual-machines) | 2048 MB / 1 CPU | 55 GB |
 
-For each machine, make sure it is connected to the created NAT network by going to **Settings** > **Network**. Select **Expert** and and configure the following settings:
+> Installation and setup for `vuln-workstation` will be covered in [Part 6](https://github.com/larryn-tech/homelab/blob/main/06-metasploitable.md) of this series.
+
+### Creating a Virtual Machine
+For each VM, we’ll need to download the corresponding ISO file linked under **Operating System** in the table above.
+1. To create a VM in VirtualBox, go to **Machine** > **New**
+
+![vbx-create-01]
+
+2. For the **Name and Operating System** section, enter the name of the VM, select where to save it, and select the matching `.iso` file
+	- The correct type and version should be automatically selected based on the `.iso` file, although I did need to change the version for `dc-server` from Windows 2022 to Windows 2025
+
+	Check the `Skip Unattended Installation` box
+
+![vbx-create-02]
+
+3. For the **Hardware** section, select the amount of memory and processors to allocate to the VM based on the table above
+
+![vbx-create-03]
+
+4. In the **Hard Disk** section, select `Create a Virtual Hard Disk Now` and select the virtual hard disk storage storage size according to the table
+
+![vbx-create-04]
+
+5. Click `Finish` to create the new VM
+
+6. For each machine, make sure it is connected to the created NAT network by clicking on it and going to **Settings** > **Network**. Select **Expert** and and configure the following settings:
 - Attached to: `NAT Network`
 - Name: `goldrush-network`
 
@@ -164,6 +188,103 @@ network:
     version: 2
 ```
 
+---
+
+## `win-workstation` VM
+### Windows Installation
+After starting the `win-workstation` VM, we’ll be guided through the Windows 10 installation process.
+1. Select your language, time and currency format, and keyboard layout
+2. Click `Install now`
+3. Click on `I don’t have a product key` to activate Windows later
+4. Select `Windows 10 Pro` for the operating system
+5. Accept the license terms
+6. Choose `Custom: Install Windows only (advanced)`
+7. Install Windows on Drive 0 (should be the only option listed)
+8. Allow the installation to complete and the VM to restart
+9. Select your region to complete the setup
+
+### IP Address Configuration
+1. Right-click on the network icon in the toolbar and select `Open Network & Internet settings`
+2. Under **Ethernet**, click on `Change adapter options`
+3. Right-click on `Ethernet` and select `Properties`
+
+![win-ip-03]
+
+4. In the **Ethernet Properties** window, double-click on `Internet Protocol Version 4 (TCP/IPv4)`
+5. Enter the following settings:
+   - **IP address**: `192.168.10.100`
+   - **Subnet mask**: `255.255.255.0`
+   - **Default gateway**: `192.168.10.1`
+   - **Preferred DNS server**: `192.168.10.7`
+6. Press `OK`, then `OK` for the **Ethernet Properties** window
+7. We can verify the IP settings by running `ipconfig` in Command Prompt
+
+![win-ip-07]
+
+---
+
+## `attacker` VM
+### Kali Linux Installation
+1. Start the `attacker` VM
+2. At the Kali Linux Boot screen, select the `Graphical Install` option
+3. Select your preferred language, location, and keyboard layout
+4. Change the hostname from `kali` to `attacker`
+5. Leave the domain name empty
+6. Enter `attacker` for both the full name and username
+7. Enter `attackerPW1` for the password
+8. Set your time zone
+9. Select `Guided - use entire disk` for the disk partitioning method
+10. Continue with the selected disk to partition
+11. Select `All files in one partition` for the partitioning scheme
+12. Select `Finish partitioning and write changes to disk`
+13. Select `Yes` to write the changes to disks
+14. Keep the default software to install selected and continue
+15. Select `Yes` to install the GRUB boot loader
+16. Select `/dev/sda` device for boot loader installation
+17. Click `continue` to finish the installation and reboot the system
+18. Login with `attacker` and `attackerPW1`
+19. Open the terminal and run the following command to update and install packages:
+
+```bash
+sudo apt-get update && sudo apt-get install -y
+```
+
+> If you run into a GPG error where signatures couldn’t be verified because the public key is not available, run the following command to manually download and install the [new key](https://archive.kali.org/archive-keyring.gpg):
+
+```bash
+sudo wget https://archive.kali.org/archive-keyring.gpg -O /usr/share/keyrings/kali-archive-keyring.gpg
+```
+
+> And then rerun the update and install command above
+
+![atk-kali-19]
+
+
+### IP Address Configuration
+1. Right-click on the network icon in the menu bar and select `Edit Connections`
+
+![atk-ip-01]
+
+2. Select `Wired connection 1` and click on the gears icon to edit
+
+![atk-ip-02]
+
+3. In the **IPv4 Settings** tab, click on `Add` and configure the following settings:
+	- **Address**: `192.168.10.250`
+    - **Netmask**: `24`
+    - **Gateway**: `192.168.10.1`
+    - **DNS servers**: `8.8.8.8`
+
+![atk-ip-03]
+
+4. Click `Save`
+5. Verify the IP settings by opening the terminal and running the `ifconfig` command
+6. We can also check that our network has been configured correctly by  pinging Google
+
+![atk-ip-06]
+
+
+
 [atk-ip-01]: ./img/01/01-atk-ip-01.png
 [atk-ip-02]: ./img/01/01-atk-ip-02.png
 [atk-ip-03]: ./img/01/01-atk-ip-03.png
@@ -182,5 +303,8 @@ network:
 [spl-ubuntu-11]: ./img/01/01-spl-ubuntu-11.png
 [spl-ubuntu-16]: ./img/01/01-spl-ubuntu-16.png
 [win-ip-03]: ./img/01/01-win-ip-03.png
-[win-ip-05]: ./img/01/01-win-ip-05.png
 [win-ip-07]: ./img/01/01-win-ip-07.png
+[vbx-create-01]: ./img/01/01-vbx-create-01.png
+[vbx-create-02]: ./img/01/01-vbx-create-02.png
+[vbx-create-03]: ./img/01/01-vbx-create-03.png
+[vbx-create-04]: ./img/01/01-vbx-create-04.png
