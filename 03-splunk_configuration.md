@@ -73,8 +73,8 @@ Back on the `splunk-server` VM, we will setup the VM to be able to access the Sp
 ![spl-server-14a]
 ![spl-server-14b]
 
-15. Once the installation is complete, switch to the `splunk` user by running `sudo -u splunk bash`
-16. Navigate to the `bin` folder with `cd bin`
+15. Once the installation is complete, navigate to the `bin` folder with `cd bin`
+16. Switch to the `splunk` user by running `sudo -u splunk bash`
 17. To start Splunk, run the command `./splunk start`
 18. When presented with Splunk’s terms and agreement, press/hold **Space** to scroll to the bottom and press **Y** and then **Enter** to agree
 
@@ -85,7 +85,7 @@ Back on the `splunk-server` VM, we will setup the VM to be able to access the Sp
     - I used `goldrush` and `splunk-serverPW1` once again
 20. We can automatically start the Splunk server whenever the VM boots up with the following commands:
     - `exit` to switch back to the `goldrush` user
-    - `sudo bin/splunk enable boot-start -user splunk`
+    - `sudo ./splunk enable boot-start -user splunk`
 
 ![spl-server-20]
 
@@ -114,7 +114,7 @@ Back on the `splunk-server` VM, we will setup the VM to be able to access the Sp
 5. Run PowerShell as administrator
 6. Enter `cd` and paste the destination path
    - ex. `cd C:\Users\win-workstation\Downloads\Sysmon`
-7. Run the command `.Sysmon64.exe -i ..\sysmonconfig.xml`
+7. Run the command `.\Sysmon64.exe -i ..\sysmonconfig.xml`
 
 ![win-sysmon-07]
 
@@ -157,14 +157,15 @@ To instruct the Splunk Universal Forwarder on what information to send to the Sp
 8. Back in the **Services** window, right-click on `SplunkForwarder` and click on `Restart` to apply the inputs configuration and log on as local system account settings
    - If you receive an error message saying that Windows could not stop the SplunkForwarder service, click `OK` to dismiss the message and right-click on `SplunkForwarder` and then click `Start`
 
-![win-uf-08]
-
 ## Splunk Index Configuration
 1. Open [192.168.10.10:8000](https://192.168.10.10:8000) in a web browser and login to Splunk with the username and password created in step 19 of the **Splunk Server Installation** section (`goldrush`/`splunk-serverPW1`)
+
+![win-index-01]
+
 2. Navigate to **Settings** > **Indexes** and click on `New Index`
 3. Enter `endpoint` for the Index Name and click `Save`
 
-![win-index-3]
+![win-index-03]
 
 4. Navigate to **Settings** > **Forwarding and receiving** and click on `Configure receiving` under the **Receive data** section
 
@@ -172,6 +173,9 @@ To instruct the Splunk Universal Forwarder on what information to send to the Sp
 
 5. Click on the `New Receiving Port` button
 6. Enter `9997` for the listening port and click `Save`
+
+![win-index-06]
+
 7. Navigate to **Apps** > **Search & Reporting**
 8. In the search bar, enter `index=endpoint` and click on the search button
 9. If everything was configured properly, we should have events returned in the search
@@ -203,7 +207,7 @@ Setting up Splunk on `dc-server` is nearly identical to the process for `win-wor
 5. Run PowerShell as administrator
 6. Enter `cd` and paste the destination path
    - ex. `cd C:\Users\Administrator\Downloads\Sysmon`
-7. Run the command `.Sysmon64.exe -i ..\sysmonconfig.xml`
+7. Run the command `.\Sysmon64.exe -i ..\sysmonconfig.xml`
 8. Agree to the license terms
 
 ### Splunk Universal Forwarder Configuration
@@ -265,9 +269,9 @@ Setting up Splunk on `dc-server` is nearly identical to the process for `win-wor
 [win-index-01]: ./img/03/03-win-index-01.png
 [win-index-03]: ./img/03/03-win-index-03.png
 [win-index-04]: ./img/03/03-win-index-04.png
+[win-index-06]: ./img/03/03-win-index-06.png
 [win-index-10]: ./img/03/03-win-index-10.png
 [win-sysmon-02]: ./img/03/03-win-sysmon-02.png
 [win-sysmon-07]: ./img/03/03-win-sysmon-07.png
 [win-uf-03]: ./img/03/03-win-uf-03.png
 [win-uf-06]: ./img/03/03-win-uf-06.png
-[win-uf-08]: ./img/03/03-win-uf-08.png

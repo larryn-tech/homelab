@@ -7,6 +7,8 @@ Topics and tools covered:
 - Sysmon
 - Splunk
 - Kali Linux
+- Atomic Red Team
+- Nessus Essentials
 
 My goal is to continue to build on this home lab as I come across new topics and tools that I find interesting.
 
