@@ -56,10 +56,10 @@ In this part, we will:
 ![dcs-creating-04]
 
 5. For my first user, I entered:
-   - First name: `Kyle`
-   - Last name: `Shanahan`
-   - Full name: `Kyle Shanahan`
-   - User logon name: `kshanahan`
+	- First name: `Kyle`
+	- Last name: `Shanahan`
+	- Full name: `Kyle Shanahan`
+	- User logon name: `kshanahan`
 
 ![dcs-creating-05]
 
@@ -77,7 +77,7 @@ We will use PowerShell to create three more OUs (Offense, Defense, and Special T
 1. Download the `team.csv` [here](https://github.com/larryn-tech/homelab/blob/main/resources/team.csv) and save it to the Desktop
 2. Search for "PowerShell ISE” in the Windows search bar and click `Open`
 3. If you haven’t already, enable bidirectional clipboard to allow copying and pasting between the host and virtual machines
-   - In the virtual machine’s menu bar, navigate to **Devices** > **Shared Clipboard** and select `Bidirectional`
+	- In the virtual machine’s menu bar, navigate to **Devices** > **Shared Clipboard** and select `Bidirectional`
 4. Copy and paste the following script into PowerShell ISE:
 
 ```powershell
@@ -156,12 +156,12 @@ Before we can join the `win-workstation` machine to our domain, we must set `dc-
 ![win-join-04]
 
 5. Enter the credentials for the `dc-server`'s `Administrator` account
-   - User name: `administrator`
-   - Password: `dc-serverPW1`
+	- User name: `administrator`
+	- Password: `dc-serverPW1`
 6. If successful, you will get a message welcoming you to the domain
 7. Click `OK` and then restart to apply changes
 8. At the logon screen, select `Other user` and sign in using one of the created user accounts
-   - Ex. `gkittle`(password: `goldrush-PW1`)
+	- Ex. `gkittle`(password: `goldrush-PW1`)
 
 ![win-join-08]
 

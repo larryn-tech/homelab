@@ -69,8 +69,8 @@ For each VM, we’ll need to download the corresponding ISO file linked under **
 5. Click `Finish` to create the new VM
 
 6. For each machine, make sure it is connected to the created NAT network by clicking on it and going to **Settings** > **Network**. Select **Expert** and and configure the following settings:
-- Attached to: `NAT Network`
-- Name: `goldrush-network`
+	- Attached to: `NAT Network`
+	- Name: `goldrush-network`
 
 ![settings-01]
 
@@ -117,10 +117,10 @@ We’ll rename the PC to `dc-server`.
 3. Select `Manual` for **Edit IP settings**
 4. Toggle IPv4 to `On`
 5. Enter the following settings:
-   - IP address: `192.168.10.7`
-   - Subnet mask: `255.255.255.0`
-   - Gateway: `192.168.10.1`
-   - Preferred DNS: `8.8.8.8`
+	- IP address: `192.168.10.7`
+  	- Subnet mask: `255.255.255.0`
+	- Gateway: `192.168.10.1`
+	- Preferred DNS: `8.8.8.8`
 
 ![dcs-ip-05]
 
@@ -145,7 +145,7 @@ After powering up the `splunk-server` VM, we are presented with the GNU GRUB boo
 9. Check `Use an entire disk` and `Set up this disk as an LVM group`
 10. Press `Done` at the **Storage configuration** screen and then `Continue`
 11. For **Profile setup**, I used the following:
-    - Name: `Sam`
+	- Name: `Sam`
 	- Server’s name: `splunk`
 	- Username: `goldrush`
 	- Password: `splunk-serverPW1`
